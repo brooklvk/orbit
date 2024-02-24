@@ -35,13 +35,12 @@ public:
 	}
 
 private: 
-	double st; // distance at a given time t.This is a position on a coordinate plane
-	double s0; // initial position
+	double st; // distance at a given time t. This is a position on a coordinate plane
 
 	double s; // distance in meters(m)
 	double s0; // initial distance(m)
 	double v; // velocity(m / s)
-	double t; // time(s)
+	double t = 0; // time(s)
 
 	double x; // horizontal position at time t(m)
 	double x0; // initial horizontal position(m)
@@ -51,10 +50,9 @@ private:
 	double y0; // initial vertical position(m)
 	double dy; // vertical component of velocity(m/s)
 
-	double a; // acceleration(m / s2)
+	double a = 0; // acceleration(m / s2)
 
-	double v; // velocity in meters(m / s)
-	double v0; // initial velocity(m / s)
+	double v0 = 0; // initial velocity(m / s)
 
 	double xt; //xt = horizontal position at time t(m)
 	double ddx; //ddx = horizontal component of acceleration(m / s2)
