@@ -139,16 +139,22 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="earth.cpp" />
+    <ClCompile Include="motion.cpp" />
     <ClCompile Include="Orbit.cpp" />
     <ClCompile Include="position.cpp" />
     <ClCompile Include="test.cpp" />
+    <ClCompile Include="time.cpp" />
     <ClCompile Include="uiDraw.cpp" />
     <ClCompile Include="uiInteract.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="earth.h" />
+    <ClInclude Include="motion.h" />
     <ClInclude Include="position.h" />
     <ClInclude Include="test.h" />
     <ClInclude Include="testPosition.h" />
+    <ClInclude Include="time.h" />
     <ClInclude Include="uiDraw.h" />
     <ClInclude Include="uiInteract.h" />
   </ItemGroup>

@@ -15,6 +15,10 @@
 #include "uiInteract.h" // for INTERFACE
 #include "uiDraw.h"     // for RANDOM and DRAW*
 #include "position.h"      // for POINT
+#include "time.h"       // for Time class 
+#include "earth.h"      // for Earth class 
+#include "motion.h"     // for Motion class 
+#include <iostream>     // so we can use cout 
 using namespace std;
 
 /*************************************************************************
