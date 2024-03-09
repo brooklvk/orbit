@@ -11,7 +11,8 @@
 #include "testPosition.h"
 #include "testDirection.h"
 #include "testPhysics.h"
-
+#include <iostream>
+using namespace std;
 /*****************************************************************
  * TEST RUNNER
  * Runs all the unit tests
@@ -19,8 +20,10 @@
 void testRunner()
 {
     TestDirection().run();
+    cout << "Direction tests pass." << endl;
     TestPosition().run();
+    cout << "Position tests pass." << endl;
     TestPhysics().run();
-    
-    
+    cout << "Physics tests pass." << endl;
+     
 }
