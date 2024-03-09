@@ -1,8 +1,8 @@
 /*************************************************************
  * 1. Name:
- *      Demo
+ *      Orbit
  * 2. Assignment Name:
- *      Lab 07: Orbit Simulator
+ *      Lab 08: Orbit Simulator
  * 3. Assignment Description:
  *      Simulate satellites orbiting the earth
  * 4. What was the hardest part? Be as specific as possible.
