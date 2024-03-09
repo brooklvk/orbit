@@ -8,6 +8,10 @@
 #ifndef testDirection_h
 #define testDirection_h
 #include "direction.h"
+#include <iostream>
+#include <cassert>
+using namespace std;
+
 
 
 class TestDirection {
@@ -79,7 +83,7 @@ public:
     }
 
     static void run(){
-        std::cout << "Running Direction class tests..." << std::endl;
+        cout << "Running Direction class tests..." << endl;
 
         testSetGetRadians();
         testSetGetDegrees();
@@ -92,7 +96,7 @@ public:
         testSetRadiansGetDegrees();
         testSetDegreesGetRadians();
 
-        std::cout << "All Direction class tests passed!" << std::endl;
+        cout << "All Direction class tests passed!" << endl;
     }
 };
 
