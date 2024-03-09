@@ -46,71 +46,121 @@ public:
     }
 
     // Test cases for updateVelocity()
-    static void testUpdateVelocityStationary() {
-        double v = (0.0, 0.0), a = (0.0, 0.0), t = 0.0;
+   static void testUpdateVelocityStationary() {
+        Velocity v(0.0, 0.0);
+        Acceleration a(0.0, 0.0);
+        double t = 0.0;
+
         updateVelocity(v, a, t);
-        assert(v == 0.0, 0.0));
+        assert(v.getDx() == 0.0);
+        assert(v.getDy() == 0.0);
     }
 
     static void testUpdateVelocityMoving() {
-        double v_x = 1.2, v_y = 3.4, a_x = 0.0, a_y = 0.0, t = 0.0;
-        updateVelocity(v_x, v_y, a_x, a_y, t);
-        assert(v_x == 1.2 && v_y == 3.4);
+        Velocity v(1.2, 3.4);
+        Acceleration a(0.0, 0.0);
+        double t = 0.0;
+
+        updateVelocity(v, a, t);
+        assert(v.getDx() == 1.2);
+        assert(v.getDy() == 3.4);
     }
 
     static void testUpdateVelocityAccelerationFromStop() {
-        double v_x = 0.0, v_y = 0.0, a_x = 1.2, a_y = 3.4, t = 1.0;
-        updateVelocity(v_x, v_y, a_x, a_y, t);
-        assert(v_x == 1.2 && v_y == 3.4);
+        Velocity v(0.0, 0.0);
+        Acceleration a(1.2, 3.4);
+        double t = 1.0;
+
+        updateVelocity(v, a, t);
+        assert(v.getDx() == 1.2);
+        assert(v.getDy() == 3.4);
     }
 
     static void testUpdateVelocityAccelerationFromStopLonger() {
-        double v_x = 0.0, v_y = 0.0, a_x = 1.2, a_y = 3.4, t = 2.0;
-        updateVelocity(v_x, v_y, a_x, a_y, t);
-        assert(v_x == 2.4 && v_y == 6.8);
+        Velocity v(0.0, 0.0);
+        Acceleration a(1.2, 3.4);
+        double t = 2.0;
+
+        updateVelocity(v, a, t);
+        assert(v.getDx() == 2.4);
+        assert(v.getDy() == 6.8);
     }
 
     static void testUpdateVelocityComplex() {
-        double v_x = 4.1, v_y = 6.0, a_x = 0.5, a_y = 0.2, t = 3.0;
-        updateVelocity(v_x, v_y, a_x, a_y, t);
-        assert(v_x == 5.6 && v_y == 6.6);
+        Velocity v(4.1, 6.0);
+        Acceleration a(0.5, 0.2);
+        double t = 3.0;
+
+        updateVelocity(v, a, t);
+        assert(v.getDx() == 5.6);
+        assert(v.getDy() == 6.6);
     }
 
     // Test cases for updatePosition()
     static void testUpdatePositionStationary() {
-        double x = 11.1, y = 22.2, v_x = 0.0, v_y = 0.0, a_x = 0.0, a_y = 0.0, t = 1.0;
-        updatePosition(x, y, v_x, v_y, a_x, a_y, t);
-        assert(x == 11.1 && y == 22.2);
+        Position p(11.1, 22.2);
+        Velocity v(0.0, 0.0);
+        Acceleration a(0.0, 0.0);
+        double t = 1.0;
+
+        updatePosition(p, v, a, t);
+        assert(p.getX() == 11.1);
+        assert(p.getY() == 22.2);
     }
 
     static void testUpdatePositionMoving() {
-        double x = 11.1, y = 22.2, v_x = 0.5, v_y = 0.4, a_x = 0.0, a_y = 0.0, t = 1.0;
-        updatePosition(x, y, v_x, v_y, a_x, a_y, t);
-        assert(x == 11.6 && y == 22.6);
+        Position p(11.1, 22.2);
+        Velocity v(0.5, 0.4);
+        Acceleration a(0.0, 0.0);
+        double t = 1.0;
+
+        updatePosition(p, v, a, t);
+        assert(p.getX() == 11.6);
+        assert(p.getY() == 22.6);
     }
 
     static void testUpdatePositionMovingLonger() {
-        double x = 11.1, y = 22.2, v_x = 0.5, v_y = 0.4, a_x = 0.0, a_y = 0.0, t = 2.0;
-        updatePosition(x, y, v_x, v_y, a_x, a_y, t);
-        assert(x == 12.1 && y == 23.0);
+        Position p(11.1, 22.2);
+        Velocity v(0.5, 0.4);
+        Acceleration a(0.0, 0.0);
+        double t = 2.0;
+
+        updatePosition(p, v, a, t);
+        assert(p.getX() == 12.1);
+        assert(p.getY() == 23.0);
     }
 
     static void testUpdatePositionFromStop() {
-        double x = 11.1, y = 22.2, v_x = 0.0, v_y = 0.0, a_x = 0.2, a_y = 0.3, t = 1.0;
-        updatePosition(x, y, v_x, v_y, a_x, a_y, t);
-        assert(x == 11.2 && y == 22.35);
+        Position p(11.1, 22.2);
+        Velocity v(0.0, 0.0);
+        Acceleration a(0.2, 0.3);
+        double t = 1.0;
+
+        updatePosition(p, v, a, t);
+        assert(p.getX() == 11.2);
+        assert(p.getY() == 22.35);
     }
 
     static void testUpdatePositionFromStopLonger() {
-        double x = 11.1, y = 22.2, v_x = 0.0, v_y = 0.0, a_x = 0.2, a_y = 0.3, t = 2.0;
-        updatePosition(x, y, v_x, v_y, a_x, a_y, t);
-        assert(x == 11.5 && y == 22.8);
+        Position p(11.1, 22.2);
+        Velocity v(0.0, 0.0);
+        Acceleration a(0.2, 0.3);
+        double t = 2.0;
+
+        updatePosition(p, v, a, t);
+        assert(p.getX() == 11.5);
+        assert(p.getY() == 22.8);
     }
 
     static void testUpdatePositionComplex() {
-        double x = 11.1, y = 22.2, v_x = 1.0, v_y = 2.0, a_x = 0.2, a_y = 0.3, t = 2.0;
-        updatePosition(x, y, v_x, v_y, a_x, a_y, t);
-        assert(x == 13.5 && y == 26.8);
+        Position p(11.1, 22.2);
+        Velocity v(1.0, 2.0);
+        Acceleration a(0.2, 0.3);
+        double t = 2.0;
+
+        updatePosition(p, v, a, t);
+        assert(p.getX() == 13.5);
+        assert(p.getY() == 26.8);
     }
 
     // Run all test methods

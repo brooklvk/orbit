@@ -83,8 +83,6 @@ public:
     }
 
     static void run(){
-        cout << "Running Direction class tests..." << endl;
-
         testSetGetRadians();
         testSetGetDegrees();
         testSetDxDy();
@@ -95,8 +93,6 @@ public:
         testRotate();
         testSetRadiansGetDegrees();
         testSetDegreesGetRadians();
-
-        cout << "All Direction class tests passed!" << endl;
     }
 };
 

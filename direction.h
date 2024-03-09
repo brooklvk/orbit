@@ -5,8 +5,8 @@
 //  Created by Spencer Lamoreaux on 3/9/24.
 //
 
-#ifndef direction_h
-#define direction_h
+#ifndef Direction_h
+#define Direction_h
 
 class Direction {
 private:
@@ -58,4 +58,4 @@ public:
 };
 
 
-#endif /* direction_h */
+#endif /* Direction_h */
