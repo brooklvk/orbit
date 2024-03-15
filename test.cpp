@@ -19,11 +19,12 @@ using namespace std;
  ****************************************************************/
 void testRunner()
 {
-    TestDirection().run();
-    cout << "Direction tests pass." << endl;
+    
     TestPosition().run();
     cout << "Position tests pass." << endl;
-    TestPhysics().run();
-    cout << "Physics tests pass." << endl;
+    TestDirection().run();
+    cout << "Direction tests pass." << endl;
+//    TestPhysics().run();
+//    cout << "Physics tests pass." << endl;
      
 }

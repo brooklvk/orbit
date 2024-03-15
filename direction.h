@@ -14,47 +14,21 @@ private:
 
 public:
     // Constructors
-    Direction() : radians(0.0) {}
-    
-    // Setters
-    void setRadians(double radians){
-        
-    };
-    void setDegrees(double degrees){
-        
-    };
-    void setDxDy(double dx, double dy){
-        
-    };
-    void setUp(){
-            
-    };
-    void setDown(){
-            
-    };
-    void setLeft(){
-                    
-    };
-    void setRight(){
-
-    };
-    void rotate(double amount){
-
-    };
+    Direction() : radians(0.0){};
+    void setRadians(double radians);
+    void setDegrees(double degrees);
+    void setDxDy(double dx, double dy);
+    void setUp();
+    void setDown();
+    void setLeft();
+    void setRight();
+    void rotate(double amount);
 
     // Getters
-    double getRadians() const{
-        return 0;
-    };
-    double getDegrees() const{
-        return 0;
-    };
-    double getDx() const{
-        return 0;
-    };
-    double getDy() const{
-        return 0;
-    };
+    double getRadians() const;
+    double getDegrees() const;
+    double getDx() const;
+    double getDy() const;
 };
 
 
