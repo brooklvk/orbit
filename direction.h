@@ -4,7 +4,7 @@
 //
 //  Created by Spencer Lamoreaux on 3/9/24.
 //
-
+#pragma once
 #ifndef Direction_h
 #define Direction_h
 
