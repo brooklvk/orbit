@@ -24,7 +24,7 @@ void testRunner()
     cout << "Position tests pass." << endl;
     TestDirection().run();
     cout << "Direction tests pass." << endl;
-//    TestPhysics().run();
-//    cout << "Physics tests pass." << endl;
+    TestPhysics().run();
+    cout << "Physics tests pass." << endl;
      
 }

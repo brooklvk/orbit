@@ -1,36 +1,44 @@
-////
-////  Direction.h
-////  Lab07
-////
-////  Created by Spencer Lamoreaux on 3/9/24.
-////
 //
-//#pragma once
+//  Direction.h
+//  Lab07
 //
-//#include <iostream>
-//#include "position.h"
-//#include "physics.h"
-//#include <cassert>
+//  Created by Spencer Lamoreaux on 3/9/24.
 //
-//using namespace std;
-//class TestPhysics {
-//public:
-//    // Test cases for getAltitude()
-//    static void testGetAltitudeSurface() {
-//        assert(getAltitude(6378000.0, 0.0) == 0);
-//    }
-//
-//    static void testGetAltitudeXAxis() {
-//        assert(getAltitude(6379000.6, 0.0) == 1000);
-//    }
-//
-//    static void testGetAltitudeYAxis() {
-//        assert(getAltitude(0.0, 6379000.0) == 1000);
-//    }
-//
-//    static void testGetAltitudeGeostationary() {
-//        assert(getAltitude(29814450.3, 29814450.3) == 35786000.0);
-//    }
+
+#pragma once
+
+#include <iostream>
+#include "position.h"
+#include "physics.h"
+#include <cassert>
+using namespace::std;
+bool closeEnough(double num, double expected, double variance){
+    return  (0 - variance) < (num - expected) < variance;
+}
+
+using namespace std;
+class TestPhysics {
+public:
+    // Test cases for getAltitude()
+    static void testGetAltitudeSurface() {
+        Position p(6378000.0, 0.0);
+        assert(getAltitude(p) == 0);
+    }
+
+    static void testGetAltitudeXAxis() {
+        Position p(6379000.0, 0.0);
+        assert(getAltitude(p) == 1000);
+    }
+
+    static void testGetAltitudeYAxis() {
+        Position p(0.0, 6379000.0);
+        assert(getAltitude(p) == 1000);
+    }
+
+    static void testGetAltitudeGeostationary() {
+        Position p(29814450.3, 29814450.3);
+        assert(closeEnough(getAltitude(p), 35786000.0, 0.001));
+    }
 //
 //    // Test cases for getGravity()
 //    static void testGetGravitySurface() {
@@ -162,14 +170,14 @@
 //        assert(p.getX() == 13.5);
 //        assert(p.getY() == 26.8);
 //    }
-//
-//    // Run all test methods
-//    static void run() {
-//        testGetAltitudeSurface();
-//        testGetAltitudeXAxis();
-//        testGetAltitudeYAxis();
-//        testGetAltitudeGeostationary();
-//
+
+    // Run all test methods
+    static void run() {
+        testGetAltitudeSurface();
+        testGetAltitudeXAxis();
+        testGetAltitudeYAxis();
+        testGetAltitudeGeostationary();
+
 //        testGetGravitySurface();
 //        testGetGravity500K();
 //        testGetGravity2000K();
@@ -186,5 +194,5 @@
 //        testUpdatePositionFromStop();
 //        testUpdatePositionFromStopLonger();
 //        testUpdatePositionComplex();
-//    }
-//};
+    }
+};
