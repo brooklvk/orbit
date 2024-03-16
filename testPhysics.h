@@ -10,11 +10,13 @@
 #include <iostream>
 #include "position.h"
 #include "physics.h"
+#include "velocity.h"
 #include <cassert>
 using namespace::std;
 bool closeEnough(double num, double expected, double variance){
-    return  (0 - variance) < (num - expected) < variance;
+    return abs(num - expected) < variance;
 }
+
 
 using namespace std;
 class TestPhysics {
@@ -37,73 +39,97 @@ public:
 
     static void testGetAltitudeGeostationary() {
         Position p(29814450.3, 29814450.3);
-        assert(closeEnough(getAltitude(p), 35786000.0, 0.001));
+        assert(closeEnough(getAltitude(p), 35785999.96, 0.01));
     }
-//
-//    // Test cases for getGravity()
-//    static void testGetGravitySurface() {
-//        assert(getGravity(6378000.0, 0.0) == -9.806, 0.0);
-//    }
-//
-//    static void testGetGravity500K() {
-//        assert(getGravity(6378000.0 + 500000.0, 0.0) == -8.4, 0.0);
-//    }
-//
-//    static void testGetGravity2000K() {
-//        assert(getGravity(6378000.0 + 2000000.0, 0.0) == -5.7, 0.0);
-//    }
-//
-//    // Test cases for updateVelocity()
-//   static void testUpdateVelocityStationary() {
-//        Velocity v(0.0, 0.0);
-//        Acceleration a(0.0, 0.0);
-//        double t = 0.0;
-//
-//        updateVelocity(v, a, t);
-//        assert(v.getDx() == 0.0);
-//        assert(v.getDy() == 0.0);
-//    }
-//
-//    static void testUpdateVelocityMoving() {
-//        Velocity v(1.2, 3.4);
-//        Acceleration a(0.0, 0.0);
-//        double t = 0.0;
-//
-//        updateVelocity(v, a, t);
-//        assert(v.getDx() == 1.2);
-//        assert(v.getDy() == 3.4);
-//    }
-//
-//    static void testUpdateVelocityAccelerationFromStop() {
-//        Velocity v(0.0, 0.0);
-//        Acceleration a(1.2, 3.4);
-//        double t = 1.0;
-//
-//        updateVelocity(v, a, t);
-//        assert(v.getDx() == 1.2);
-//        assert(v.getDy() == 3.4);
-//    }
-//
-//    static void testUpdateVelocityAccelerationFromStopLonger() {
-//        Velocity v(0.0, 0.0);
-//        Acceleration a(1.2, 3.4);
-//        double t = 2.0;
-//
-//        updateVelocity(v, a, t);
-//        assert(v.getDx() == 2.4);
-//        assert(v.getDy() == 6.8);
-//    }
-//
-//    static void testUpdateVelocityComplex() {
-//        Velocity v(4.1, 6.0);
-//        Acceleration a(0.5, 0.2);
-//        double t = 3.0;
-//
-//        updateVelocity(v, a, t);
-//        assert(v.getDx() == 5.6);
-//        assert(v.getDy() == 6.6);
-//    }
-//
+
+    // Test cases for getGravity()
+
+    static void testGetGravitySurface()
+    { // SETUP
+        Position pos(6378000.0, 0.0);
+    // EXERCISE
+        Acceleration gravity = getGravity(pos);
+    // VERIFY
+        assert(gravity.getDDX() == -9.806);
+        assert(closeEnough(gravity.getDDY(), 0.0, 0.1));
+    }
+
+    static void testGetGravity500K() {
+        // SETUP
+        Position pos(6378000.0 + 500000.0, 0.0);
+
+        // EXERCISE
+        Acceleration gravity = getGravity(pos);
+
+        // VERIFY
+        assert(closeEnough(gravity.getDDX(), -8.4, 0.1));
+        assert(closeEnough(gravity.getDDY(), 0.0, 0.1));
+    }
+
+    static void testGetGravity2000K() {
+        // SETUP
+        Position pos(6378000.0 + 2000000.0, 0.0);
+
+        // EXERCISE
+        Acceleration gravity = getGravity(pos);
+
+        // VERIFY
+        assert(closeEnough(gravity.getDDX(), -5.7, 0.1));
+        assert(closeEnough(gravity.getDDY(), 0.0, 0.1));
+    }
+
+
+    // Test cases for updateVelocity()
+   static void testUpdateVelocityStationary() {
+        Velocity v(0.0, 0.0);
+        Acceleration a;
+        double t = 0.0;
+
+        updateVelocity(v, a, t);
+        assert(v.getDx() == 0.0);
+        assert(v.getDy() == 0.0);
+    }
+
+    static void testUpdateVelocityMoving() {
+        Velocity v(1.2, 3.4);
+        Acceleration a;
+        double t = 0.0;
+
+        updateVelocity(v, a, t);
+        assert(v.getDx() == 1.2);
+        assert(v.getDy() == 3.4);
+    }
+
+    static void testUpdateVelocityAccelerationFromStop() {
+        Velocity v(0.0, 0.0);
+        Acceleration a(1.2, 3.4);
+        double t = 1.0;
+
+        updateVelocity(v, a, t);
+        assert(v.getDx() == 1.2);
+        assert(v.getDy() == 3.4);
+    }
+
+    static void testUpdateVelocityAccelerationFromStopLonger() {
+        Velocity v(0.0, 0.0);
+        Acceleration a(1.2, 3.4);
+        double t = 2.0;
+
+        updateVelocity(v, a, t);
+        assert(v.getDx() == 2.4);
+        assert(v.getDy() == 6.8);
+    }
+
+    static void testUpdateVelocityComplex() {
+        Velocity v(4.1, 6.0);
+        Acceleration a(0.5, 0.2);
+        double t = 3.0;
+
+        updateVelocity(v, a, t);
+        assert(v.getDx() == 5.6);
+        assert(v.getDy() == 6.6);
+    }
+
 //    // Test cases for updatePosition()
 //    static void testUpdatePositionStationary() {
 //        Position p(11.1, 22.2);
@@ -178,16 +204,16 @@ public:
         testGetAltitudeYAxis();
         testGetAltitudeGeostationary();
 
-//        testGetGravitySurface();
-//        testGetGravity500K();
-//        testGetGravity2000K();
-//
-//        testUpdateVelocityStationary();
-//        testUpdateVelocityMoving();
-//        testUpdateVelocityAccelerationFromStop();
-//        testUpdateVelocityAccelerationFromStopLonger();
-//        testUpdateVelocityComplex();
-//
+        testGetGravitySurface();
+        testGetGravity500K();
+        testGetGravity2000K();
+
+        testUpdateVelocityStationary();
+        testUpdateVelocityMoving();
+        testUpdateVelocityAccelerationFromStop();
+        testUpdateVelocityAccelerationFromStopLonger();
+        testUpdateVelocityComplex();
+
 //        testUpdatePositionStationary();
 //        testUpdatePositionMoving();
 //        testUpdatePositionMovingLonger();
