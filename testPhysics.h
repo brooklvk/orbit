@@ -130,72 +130,72 @@ public:
         assert(v.getDy() == 6.6);
     }
 
-//    // Test cases for updatePosition()
-//    static void testUpdatePositionStationary() {
-//        Position p(11.1, 22.2);
-//        Velocity v(0.0, 0.0);
-//        Acceleration a(0.0, 0.0);
-//        double t = 1.0;
-//
-//        updatePosition(p, v, a, t);
-//        assert(p.getX() == 11.1);
-//        assert(p.getY() == 22.2);
-//    }
-//
-//    static void testUpdatePositionMoving() {
-//        Position p(11.1, 22.2);
-//        Velocity v(0.5, 0.4);
-//        Acceleration a(0.0, 0.0);
-//        double t = 1.0;
-//
-//        updatePosition(p, v, a, t);
-//        assert(p.getX() == 11.6);
-//        assert(p.getY() == 22.6);
-//    }
-//
-//    static void testUpdatePositionMovingLonger() {
-//        Position p(11.1, 22.2);
-//        Velocity v(0.5, 0.4);
-//        Acceleration a(0.0, 0.0);
-//        double t = 2.0;
-//
-//        updatePosition(p, v, a, t);
-//        assert(p.getX() == 12.1);
-//        assert(p.getY() == 23.0);
-//    }
-//
-//    static void testUpdatePositionFromStop() {
-//        Position p(11.1, 22.2);
-//        Velocity v(0.0, 0.0);
-//        Acceleration a(0.2, 0.3);
-//        double t = 1.0;
-//
-//        updatePosition(p, v, a, t);
-//        assert(p.getX() == 11.2);
-//        assert(p.getY() == 22.35);
-//    }
-//
-//    static void testUpdatePositionFromStopLonger() {
-//        Position p(11.1, 22.2);
-//        Velocity v(0.0, 0.0);
-//        Acceleration a(0.2, 0.3);
-//        double t = 2.0;
-//
-//        updatePosition(p, v, a, t);
-//        assert(p.getX() == 11.5);
-//        assert(p.getY() == 22.8);
-//    }
-//
-//    static void testUpdatePositionComplex() {
-//        Position p(11.1, 22.2);
-//        Velocity v(1.0, 2.0);
-//        Acceleration a(0.2, 0.3);
-//        double t = 2.0;
-//
-//        updatePosition(p, v, a, t);
-//        assert(p.getX() == 13.5);
-//        assert(p.getY() == 26.8);
-//    }
+    // Test cases for updatePosition()
+    static void testUpdatePositionStationary() {
+        Position p(11.1, 22.2);
+        Velocity v(0.0, 0.0);
+        Acceleration a(0.0, 0.0);
+        double t = 1.0;
+
+        updatePosition(p, v, a, t);
+        assert(p.getMetersX() == 11.1);
+        assert(p.getMetersY() == 22.2);
+    }
+
+    static void testUpdatePositionMoving() {
+        Position p(11.1, 22.2);
+        Velocity v(0.5, 0.4);
+        Acceleration a(0.0, 0.0);
+        double t = 1.0;
+
+        updatePosition(p, v, a, t);
+        assert(p.getMetersX() == 11.6);
+        assert(closeEnough(p.getMetersY(), 22.6, 0.001));
+    }
+
+    static void testUpdatePositionMovingLonger() {
+        Position p(11.1, 22.2);
+        Velocity v(0.5, 0.4);
+        Acceleration a(0.0, 0.0);
+        double t = 2.0;
+
+        updatePosition(p, v, a, t);
+        assert(p.getMetersX() == 12.1);
+        assert(p.getMetersY() == 23.0);
+    }
+
+    static void testUpdatePositionFromStop() {
+        Position p(11.1, 22.2);
+        Velocity v(0.0, 0.0);
+        Acceleration a(0.2, 0.3);
+        double t = 1.0;
+
+        updatePosition(p, v, a, t);
+        assert(p.getMetersX() == 11.2);
+        assert(closeEnough(p.getMetersY(), 22.35, 0.001));
+    }
+
+    static void testUpdatePositionFromStopLonger() {
+        Position p(11.1, 22.2);
+        Velocity v(0.0, 0.0);
+        Acceleration a(0.2, 0.3);
+        double t = 2.0;
+
+        updatePosition(p, v, a, t);
+        assert(p.getMetersX() == 11.5);
+        assert(p.getMetersY() == 22.8);
+    }
+
+    static void testUpdatePositionComplex() {
+        Position p(11.1, 22.2);
+        Velocity v(1.0, 2.0);
+        Acceleration a(0.2, 0.3);
+        double t = 2.0;
+
+        updatePosition(p, v, a, t);
+        assert(p.getMetersX() == 13.5);
+        assert(closeEnough(p.getMetersY(), 26.8, 0.001));
+    }
 
     // Run all test methods
     static void run() {
@@ -214,11 +214,11 @@ public:
         testUpdateVelocityAccelerationFromStopLonger();
         testUpdateVelocityComplex();
 
-//        testUpdatePositionStationary();
-//        testUpdatePositionMoving();
-//        testUpdatePositionMovingLonger();
-//        testUpdatePositionFromStop();
-//        testUpdatePositionFromStopLonger();
-//        testUpdatePositionComplex();
+        testUpdatePositionStationary();
+        testUpdatePositionMoving();
+        testUpdatePositionMovingLonger();
+        testUpdatePositionFromStop();
+        testUpdatePositionFromStopLonger();
+        testUpdatePositionComplex();
     }
 };

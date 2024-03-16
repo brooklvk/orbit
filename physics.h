@@ -30,3 +30,10 @@ Velocity& updateVelocity(Velocity& velocity, const Acceleration& acceleration, d
     velocity.addDY(acceleration.getDDY() * time);
     return velocity;
 }
+
+Position& updatePosition(Position& pos, const Velocity& vel, const Acceleration& acc, double time)
+{
+    pos.addMetersX(vel.getDx() * time + 0.5 * acc.getDDX() * time * time);
+    pos.addMetersY(vel.getDy() * time + 0.5 * acc.getDDY() * time * time);
+    return pos;
+}
