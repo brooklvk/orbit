@@ -2,5 +2,5 @@
 #pragma once
 #include "satellite.h"
 
-class whole : Satellite {    
+class Whole : public Satellite {
 };

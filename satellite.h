@@ -14,12 +14,12 @@ private:
     
 public:
     Satellite();
-    double getRadius();
-    bool isDead();
-    Position getPosition();
-    void kill();
-    void destroy(Satellite satellites);
-    void draw();
-    void move(double time);
-    void input(Interface ui);
+    double getRadius()              {return radius;};
+    bool isDead()                   {return dead;};
+    Position getPosition()          {return pos;}
+    virtual void kill();
+    virtual void destroy(Satellite satellites);
+    virtual void draw();
+    virtual void move(double time);
+    virtual void input(Interface ui);
 };
