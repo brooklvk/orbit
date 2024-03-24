@@ -15,7 +15,8 @@
 //#include "uiInteract.h" // for INTERFACE
 //#include "uiDraw.h"     // for RANDOM and DRAW*
 #include "position.h"      // for POINT
-//#include "time.h"       // for Time class 
+#include "satellite.h"
+//#include "time.h"       // for Time class
 #include "test.h"
 ////#include "earth.h"      // for Earth class
 ////#include "motion.h"     // for Motion class 
