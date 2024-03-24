@@ -14,8 +14,8 @@ private:
     
 public:
     Satellite();
-    double getRadius()              {return radius;};
-    bool isDead()                   {return dead;};
+    double getRadius()              {return radius;}
+    bool isDead()                   {return dead;}
     Position getPosition()          {return pos;}
     virtual void kill();
     virtual void destroy(Satellite satellites);

@@ -3,4 +3,9 @@
 #include "satellite.h"
 
 class Whole : public Satellite {
+private:
+    
+public:
+    
+    
 };
