@@ -1,11 +1,7 @@
-
 #pragma once
 #include "satellite.h"
 
 class Whole : public Satellite {
-private:
-    
 public:
-    
-    
+    Whole(); // Constructor declaration
 };

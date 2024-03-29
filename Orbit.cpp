@@ -16,6 +16,8 @@
 //#include "uiDraw.h"     // for RANDOM and DRAW*
 #include "position.h"      // for POINT
 #include "satellite.h"
+#include "simulator.h"
+#include "hubble.h"
 //#include "time.h"       // for Time class
 #include "test.h"
 ////#include "earth.h"      // for Earth class
@@ -185,6 +187,13 @@
 //
 double Position::metersFromPixels = 40.0;
 
+void callBack(const Interface* pUI, void* p)
+{
+    // the first step is to cast the void pointer into a game object. This
+    // is the first step of every single callback function in OpenGL.
+    Simulator* pSimulator = (Simulator*)p;
+    pSimulator->display();
+}
 /*********************************
  * Initialize the simulation and set it in motion
  *********************************/
@@ -200,21 +209,23 @@ int main(int argc, char** argv)
 #endif // !_WIN32
 {
    // Initialize OpenGL
-//   Position ptUpperRight;
-//   ptUpperRight.setZoom(128000.0 /* 128km equals 1 pixel */);
-//   ptUpperRight.setPixelsX(1000.0);
-//   ptUpperRight.setPixelsY(1000.0);
-//   Interface ui(0, NULL,
-//      "Demo",   /* name on the window */
-//      ptUpperRight);
-//
-//   // Initialize the demo
-//   Demo demo(ptUpperRight);
-//
-//   // set everything into action
-//   ui.run(callBack, &demo);
+   Position ptUpperRight;
+   ptUpperRight.setZoom(128000.0 /* 128km equals 1 pixel */);
+   ptUpperRight.setPixelsX(1000.0);
+   ptUpperRight.setPixelsY(1000.0);
+   Interface ui(0, NULL,
+      "Demo",   /* name on the window */
+      ptUpperRight);
+
+
+
+   // set everything into action
+
 
     testRunner();
-
+    Hubble hub;
+    Simulator sim;
+    
+    ui.run(callBack, &sim);
    return 0;
 }
