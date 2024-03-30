@@ -20,12 +20,12 @@ Simulator::Simulator()
      earth = new Earth();
 //   Satellite * ship = new Ship;
    Satellite * sputnik = new Sputnik;
-   Satellite * gps1 = new GPS (Position(0.0,          26560000.0),  Velocity(3880.0,   0.0));
-   Satellite * gps2 = new GPS (Position(23001634.72,  13280000.0),  Velocity(1940.00,  3360.18));
+   Satellite * gps1 = new GPS (Position(0.0,          26560000.0),  Velocity(-3880.0,   0.0));
+   Satellite * gps2 = new GPS (Position(23001634.72,  13280000.0),  Velocity(-1940.00,  3360.18));
    Satellite * gps3 = new GPS (Position(23001634.72,  -13280000.0), Velocity(1940.00,   3360.18));
    Satellite * gps4 = new GPS (Position(0.0,          -26560000.0), Velocity(3880.0,    0.0));
    Satellite * gps5 = new GPS (Position(-23001634.72, -13280000.0), Velocity(1940.00,   -3360.18));
-   Satellite * gps6 = new GPS (Position(-23001634.72, 13280000.0),  Velocity(1940.00, -3360.18));
+   Satellite * gps6 = new GPS (Position(-23001634.72, 13280000.0),  Velocity( -1940.00, -3360.18));
    Satellite * hubble = new Hubble;
    Satellite * dragon = new Dragon;
    Satellite * starlink = new Starlink;

@@ -12,7 +12,7 @@ class Starlink : public Whole {
 public:
     Starlink(){
         pos.setMeters(0.0, 13020000.0);
-        velocity.setDxDy (5800.0, 0.0);
+        velocity.setDxDy (-5800.0, 0.0);
         direction = velocity.getDirection();
         angularVelocity = 0.02;
         radius = 6 * pos.getZoom();

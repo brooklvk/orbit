@@ -5,7 +5,6 @@
 class Part : public Satellite {
 protected:
     int numFragments;
-    vector<Satellite*> parts;
 public:
     Part(Position posit, Direction dir) {
         pos.setMeters(posit.getMetersX(), posit.getMetersY());
