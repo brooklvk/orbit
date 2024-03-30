@@ -1,6 +1,8 @@
 
 #pragma once
 #include <vector>
+#include "uiInteract.h"
+#include "star.h"
 using namespace::std;
 // Forward declaration of Hubble class
 class Satellite;
@@ -21,13 +23,15 @@ public:
     
     vector<Satellite*> satellites; // Use pointer to Hubble to avoid circular dependency
     Earth* earth;
+    Star stars[500];
     
     
 public:
     // Constructor
-    Simulator();
+    Simulator(Position ptUpperRight);
 
     // Display method
+    void input(const Interface* pUI);
     void display();
     void update();
 };

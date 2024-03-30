@@ -193,7 +193,8 @@ void callBack(const Interface* pUI, void* p)
     // the first step is to cast the void pointer into a game object. This
     // is the first step of every single callback function in OpenGL.
     Simulator* pSimulator = (Simulator*)p;
-
+    
+    pSimulator->input(pUI);
     pSimulator->update();
     pSimulator->display();
 }
@@ -226,7 +227,7 @@ int main(int argc, char** argv)
 
 
    // set everything into action
-    Simulator sim;
+    Simulator sim(ptUpperRight);
     ui.run(callBack, &sim);
    return 0;
 }

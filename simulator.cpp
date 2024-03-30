@@ -3,22 +3,23 @@
 #include "hubble.h" // Include Hubble.h here
 #include "starlink.h"
 #include "sputnik.h"
+#include "ship.h"
 #include "gps.h"
 #include "dragon.h"
 #include "earth.h"
 
 // Constructor
-Simulator::Simulator()
+Simulator::Simulator(Position ptUpperRight)
 {
    // initialize the stars
-//   for (int i = 0; i < NUM_STARS; i++)
-//   {
-//      stars[i] = Star(ptUpperRight);
-//   }
+   for (int i = 0; i < 500; i++)
+   {
+      stars[i] = Star(ptUpperRight);
+   }
    
    // initialize all the satellites
-     earth = new Earth();
-//   Satellite * ship = new Ship;
+    earth = new Earth();
+   Satellite * ship = new Ship;
    Satellite * sputnik = new Sputnik;
    Satellite * gps1 = new GPS (Position(0.0,          26560000.0),  Velocity(-3880.0,   0.0));
    Satellite * gps2 = new GPS (Position(23001634.72,  13280000.0),  Velocity(-1940.00,  3360.18));
@@ -31,7 +32,7 @@ Simulator::Simulator()
    Satellite * starlink = new Starlink;
 
    // add them to the satellites collection
-//   satellites.push_back(ship);
+   satellites.push_back(ship);
    satellites.push_back(sputnik);
    satellites.push_back(hubble);
    satellites.push_back(dragon);
@@ -50,6 +51,9 @@ void Simulator::display() {
     earth->draw();
     for (Satellite* satellite: satellites) {
         satellite->draw();
+    }
+    for (Star star: stars){
+        star.draw();
     }
           
 }
@@ -96,5 +100,14 @@ void Simulator::update() {
     // Move remaining satellites
     for (Satellite* satellite : satellites) {
         satellite->move(t);
+    }
+}
+
+void Simulator::input(const Interface* pUI)
+{
+    // only the ship handles input
+    // ship should be the first element
+    for (Satellite* satellite : satellites) {
+        satellite->input(pUI, satellites);
     }
 }

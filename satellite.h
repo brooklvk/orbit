@@ -26,7 +26,7 @@ public:
     void kill(){
         dead = true;
     };
-    
+    virtual void input(const Interface* pUI, vector<Satellite *> & satellites){};
     virtual void destroy(vector<Satellite*>* satellites) = 0;
     void setPos(int x, int y){
         pos = Position(x, y);
@@ -37,7 +37,7 @@ public:
         Acceleration gravity = getGravity(pos);
         updatePosition(pos, velocity, gravity, time);
         updateVelocity(velocity, gravity, time);
-        direction.rotate(angularVelocity);
+        direction.setRadians(angularVelocity);
 
     }
 //    virtual void input(Interface ui);

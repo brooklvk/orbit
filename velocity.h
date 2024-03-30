@@ -1,6 +1,6 @@
 #pragma once
 #include "direction.h"
-
+class Acceleration;
 class Velocity {
 private:
     double dx;
@@ -32,6 +32,7 @@ public:
     void addDY(double dy);
     void addV(const Velocity& velocity);
     Velocity& operator+=(const Velocity& rhs);
+    Velocity& operator+=(const Acceleration& rhs);
     void reverse();
 };
 

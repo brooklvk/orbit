@@ -84,6 +84,12 @@ Velocity& Velocity::operator+=(const Velocity& rhs) {
     return *this;
 }
 
+Velocity& Velocity::operator += (const Acceleration& rhs){
+    dx += rhs.getDDX();
+    dy += rhs.getDDY();
+    return *this;
+};
+
 void Velocity::reverse() {
     dx *= -1.0;
     dy *= -1.0;
