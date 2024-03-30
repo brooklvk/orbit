@@ -2,6 +2,8 @@
 #pragma once
 #include "velocity.h"
 #include "uiInteract.h"
+#include "physics.h"
+using namespace::std;
 
 class Satellite{
 protected:
@@ -21,12 +23,22 @@ public:
     bool isDead()                   {return dead;}
     Velocity getVelocity()          {return velocity;}
     Position getPosition()          {return pos;}
-//    virtual void kill();
-//    virtual void destroy(Satellite satellites);
+    void kill(){
+        dead = true;
+    };
+    
+    virtual void destroy(vector<Satellite*>* satellites) = 0;
     void setPos(int x, int y){
         pos = Position(x, y);
     }
     virtual void draw() = 0;
-    virtual void move(double time) = 0;
+    virtual void move(double time){
+        
+        Acceleration gravity = getGravity(pos);
+        updatePosition(pos, velocity, gravity, time);
+        updateVelocity(velocity, gravity, time);
+        direction.rotate(angularVelocity);
+
+    }
 //    virtual void input(Interface ui);
 };

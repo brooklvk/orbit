@@ -21,6 +21,7 @@ private:
 public:
     // Constructors
     Direction() : radians(0.0){};
+    Direction(int degrees){ setDegrees(degrees);}
     void setRadians(double radians);
     void setDegrees(double degrees);
     void setDxDy(double dx, double dy);

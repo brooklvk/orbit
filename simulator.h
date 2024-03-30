@@ -7,6 +7,7 @@ class Satellite;
 class Earth;
 
 class Simulator {
+public:
     double frameRate = 30.0;
     // OpenGL draws 30 frames/second
     double hoursPerDay = 24.0;

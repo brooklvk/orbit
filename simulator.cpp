@@ -20,12 +20,12 @@ Simulator::Simulator()
      earth = new Earth();
 //   Satellite * ship = new Ship;
    Satellite * sputnik = new Sputnik;
-   Satellite * gps1 = new GPS (Position(0.0,          26560000.0),  Velocity(-3880.0,   0.0));
-   Satellite * gps2 = new GPS (Position(23001634.72,  13280000.0),  Velocity(-1940.00,  3360.18));
+   Satellite * gps1 = new GPS (Position(0.0,          26560000.0),  Velocity(3880.0,   0.0));
+   Satellite * gps2 = new GPS (Position(23001634.72,  13280000.0),  Velocity(1940.00,  3360.18));
    Satellite * gps3 = new GPS (Position(23001634.72,  -13280000.0), Velocity(1940.00,   3360.18));
    Satellite * gps4 = new GPS (Position(0.0,          -26560000.0), Velocity(3880.0,    0.0));
    Satellite * gps5 = new GPS (Position(-23001634.72, -13280000.0), Velocity(1940.00,   -3360.18));
-   Satellite * gps6 = new GPS (Position(-23001634.72, 13280000.0),  Velocity( -1940.00, -3360.18));
+   Satellite * gps6 = new GPS (Position(-23001634.72, 13280000.0),  Velocity(1940.00, -3360.18));
    Satellite * hubble = new Hubble;
    Satellite * dragon = new Dragon;
    Satellite * starlink = new Starlink;
@@ -48,16 +48,53 @@ Simulator::Simulator()
 // Display method
 void Simulator::display() {
     earth->draw();
-    vector<Satellite *>::iterator it;
-       for (it = satellites.begin(); it != satellites.end(); it++)
-          (*it)->draw();
+    for (Satellite* satellite: satellites) {
+        satellite->draw();
+    }
+          
 }
 
 void Simulator::update() {
-    
     earth->rotate(radiansPerFrame);
-    // 48 seconds per frame
-    for (Satellite* satellite: satellites) {
+    
+    // Erase dead satellites
+    satellites.erase(std::remove_if(satellites.begin(), satellites.end(), [](Satellite* satellite) {
+        return satellite->isDead();
+    }), satellites.end());
+
+    vector<Satellite*> addLater;
+    // Iterate over satellites
+    for (auto it1 = satellites.begin(); it1 != satellites.end(); ++it1) {
+        // Iterate over remaining satellites starting from the next one
+        for (auto it2 = std::next(it1); it2 != satellites.end(); ++it2) {
+            // Check for collisions only if both satellites are alive and not expired
+            if (*it1 != nullptr && !(*it1)->isDead() && !(*it2)->isDead() &&
+                !(*it1)->isDead() && !(*it2)->isDead()) {
+                
+                // Check for collision between satellites
+                double distance = computeDistance((*it1)->getPosition(), (*it2)->getPosition());
+                if (distance < (*it1)->getRadius() + (*it2)->getRadius()) {
+                    if (*it1 != nullptr ){
+                        (*it1)->destroy(&addLater);
+                    }
+                    if (*it2 != nullptr ){
+                        (*it2)->destroy(&addLater);
+                    }
+                }
+            }
+        }
+        
+        // Check for collision with Earth
+        double distanceToEarth = computeDistance((*it1)->getPosition(), earth->getPosition());
+        if (distanceToEarth < earth->getRadius()) {
+            (*it1)->destroy(&addLater);
+        }
+    }
+    for(Satellite* satellite: addLater){
+        satellites.push_back(satellite);
+    }
+    // Move remaining satellites
+    for (Satellite* satellite : satellites) {
         satellite->move(t);
     }
 }

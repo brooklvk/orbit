@@ -12,12 +12,15 @@ public:
 
     Earth(){
         pos.setMeters(0.0, 0.0);
+        radius = 6378000.0;
     };
     
+    Position getPosition()  {return pos;}
+    double getRadius()      {return radius;}
     void draw(){
         ogstream().drawEarth(pos, angle);
     }
     void rotate(double newAngle) {
-        angle += newAngle;
+        angle -= newAngle;
     }
 };

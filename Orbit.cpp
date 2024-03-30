@@ -17,6 +17,7 @@
 #include "position.h"      // for POINT
 #include "satellite.h"
 #include "simulator.h"
+#include "gps.h"
 #include "hubble.h"
 //#include "time.h"       // for Time class
 #include "test.h"
@@ -192,6 +193,7 @@ void callBack(const Interface* pUI, void* p)
     // the first step is to cast the void pointer into a game object. This
     // is the first step of every single callback function in OpenGL.
     Simulator* pSimulator = (Simulator*)p;
+
     pSimulator->update();
     pSimulator->display();
 }
