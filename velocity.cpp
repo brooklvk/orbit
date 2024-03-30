@@ -62,7 +62,8 @@ void Velocity::setSpeed(double speed) {
 }
 
 void Velocity::setSpeedDirection(double speed, const Direction& direction) {
-    // Implementation required
+    dy = speed * direction.getDy();
+    dx = speed * direction.getDx();
 }
 
 void Velocity::addDX(double dx) {
