@@ -2,12 +2,12 @@
 #include "satellite.h"
 #include "physics.h"
 
-class Whole : public Satellite {
+class Part : public Satellite {
 protected:
     int numFragments;
     vector<Satellite*> parts;
 public:
-    Whole(); // Constructor declaration
+    Part(); // Constructor declaration
     virtual void move(double time) override{
         
         Acceleration gravity = getGravity(pos);

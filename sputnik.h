@@ -8,16 +8,16 @@
 
 using namespace std;
 
-class Starlink : public Whole {
+class Sputnik : public Whole {
 public:
-    Starlink(){
-        pos.setMeters(0.0, -13020000.0);
-        velocity.setDxDy (5800.0, 0.0);
+    Sputnik(){
+        pos.setMeters(-36515095.13 , 21082000.0);
+        velocity.setDxDy (2050.0, 2684.68);
         direction = velocity.getDirection();
         angularVelocity = 0.02;
 
     };
     virtual void draw() override{
-        ogstream().drawStarlink(pos, direction.getRadians());
+        ogstream().drawSputnik(pos, direction.getRadians());
     }
 };
