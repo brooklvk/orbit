@@ -5,7 +5,7 @@
 class Ship;
 class Projectile : public Satellite {
 protected:
-    int lifespan = 70;
+    int lifespan = 170;
 public:
     Projectile(Ship* ship);
     virtual void move(double time) override{
@@ -15,6 +15,7 @@ public:
         updateVelocity(velocity, gravity, time);
         direction.rotate(angularVelocity);
         lifespan -= 1;
+        radius = 1 * pos.getZoom();
 
     }
     virtual void draw() override{

@@ -54,5 +54,14 @@ public:
           // add the bullet to the list of satellites
            satellites.push_back(new Projectile(this));
        }
+        
+    }
+    virtual void move(double time) override{
+        
+        Acceleration gravity = getGravity(pos);
+        updatePosition(pos, velocity, gravity, time);
+        updateVelocity(velocity, gravity, time);
+        direction.setRadians(angularVelocity);
+
     }
 };

@@ -37,7 +37,7 @@ public:
         Acceleration gravity = getGravity(pos);
         updatePosition(pos, velocity, gravity, time);
         updateVelocity(velocity, gravity, time);
-        direction.setRadians(angularVelocity);
+        direction.rotate(angularVelocity);
 
     }
 //    virtual void input(Interface ui);
