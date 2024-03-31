@@ -13,14 +13,15 @@ public:
         int fragmentSpeed = random(5000, 9000);
         
         
-        // Ensure fragments are placed 4 pixels away from the point of creation in the direction of travel
-        double offsetX = 8 * cos(velocity.getDirection().getRadians());
-        double offsetY = 8 * sin(velocity.getDirection().getRadians());
-        pos.addMetersX(offsetX);
-        pos.addMetersY(offsetY);
+
         
         // Randomly rotate the direction of the fragment
         direction = dir;
+        // Ensure fragments are placed 4 pixels away from the point of creation in the direction of travel
+        double offsetX = 4 * pos.getZoom() * dir.getDx();
+        double offsetY = 4 * pos.getZoom() * dir.getDy();
+        pos.addMetersX(offsetX);
+        pos.addMetersY(offsetY);
         
         velocity += Velocity(fragmentSpeed, direction);
         
@@ -47,7 +48,7 @@ class GPSCenter : public Part {
 public:
     // Constructor
     GPSCenter(Position posit, Direction dir) : Part(posit, dir) {
-        radius = 7;
+        radius = 7 * pos.getZoom();
         numFragments = 3;
     }
 
@@ -61,7 +62,7 @@ class GPSLeft : public Part {
 public:
     // Constructor
     GPSLeft(Position posit, Direction dir) : Part(posit, dir) {
-        radius = 8;
+        radius = 8 * pos.getZoom();
         numFragments = 2;
     }
 
@@ -75,7 +76,7 @@ class GPSRight : public Part {
 public:
     // Constructor
     GPSRight(Position posit, Direction dir) : Part(posit, dir) {
-        radius = 8;
+        radius = 8 * pos.getZoom();
         numFragments = 2;
     }
 
@@ -89,7 +90,7 @@ class HubbleTelescope : public Part {
 public:
     // Constructor
     HubbleTelescope(Position posit, Direction dir) : Part(posit, dir) {
-        radius = 10;
+        radius = 10 * pos.getZoom();
         numFragments = 3;
     }
 
@@ -103,7 +104,7 @@ class HubbleComputer : public Part {
 public:
     // Constructor
     HubbleComputer(Position posit, Direction dir) : Part(posit, dir) {
-        radius = 7;
+        radius = 7 * pos.getZoom();
         numFragments = 2;
     }
 
@@ -117,7 +118,7 @@ class HubbleLeft : public Part {
 public:
     // Constructor
     HubbleLeft(Position posit, Direction dir) : Part(posit, dir) {
-        radius = 8;
+        radius = 8 * pos.getZoom();
         numFragments = 2;
     }
 
@@ -131,7 +132,7 @@ class HubbleRight : public Part {
 public:
     // Constructor
     HubbleRight(Position posit, Direction dir) : Part(posit, dir) {
-        radius = 8;
+        radius = 8 * pos.getZoom();
         numFragments = 2;
     }
 
@@ -145,7 +146,7 @@ class CrewDragonCenter : public Part {
 public:
     // Constructor
     CrewDragonCenter(Position posit, Direction dir) : Part(posit, dir) {
-        radius = 6;
+        radius = 6 * pos.getZoom();
         numFragments = 4;
     }
 
@@ -159,7 +160,7 @@ class CrewDragonLeft : public Part {
 public:
     // Constructor
     CrewDragonLeft(Position posit, Direction dir) : Part(posit, dir) {
-        radius = 6;
+        radius = 6 * pos.getZoom();
         numFragments = 2;
     }
 
@@ -173,7 +174,7 @@ class CrewDragonRight : public Part {
 public:
     // Constructor
     CrewDragonRight(Position posit, Direction dir) : Part(posit, dir) {
-        radius = 6;
+        radius = 6 * pos.getZoom();
         numFragments = 2;
     }
 
@@ -187,7 +188,7 @@ class StarlinkBody : public Part {
 public:
     // Constructor
     StarlinkBody(Position posit, Direction dir) : Part(posit, dir) {
-        radius = 2;
+        radius = 2 * pos.getZoom();
         numFragments = 3;
     }
 
@@ -201,7 +202,7 @@ class StarlinkArray : public Part {
 public:
     // Constructor
     StarlinkArray(Position posit, Direction dir) : Part(posit, dir) {
-        radius = 4;
+        radius = 4 * pos.getZoom();
         numFragments = 3;
     }
 
