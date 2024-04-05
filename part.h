@@ -1,213 +1,143 @@
 #pragma once
+
 #include "satellite.h"
 #include "physics.h"
+#include <vector>
 
+using namespace std;
+
+// Base class for satellite parts
 class Part : public Satellite {
 protected:
-    int numFragments;
+    int numFragments;  // Number of fragments created upon destruction
+
 public:
-    Part(Position posit, Direction dir) {
-        pos.setMeters(posit.getMetersX(), posit.getMetersY());
-        
-        // Generate a random speed for the fragment between 5000 and 9000 m/s
-        int fragmentSpeed = random(5000, 9000);
-        
-        
+    // Constructor
+    Part(Position posit, Direction dir);
 
-        
-        // Randomly rotate the direction of the fragment
-        direction = dir;
-        // Ensure fragments are placed 4 pixels away from the point of creation in the direction of travel
-        double offsetX = 4 * pos.getZoom() * dir.getDx();
-        double offsetY = 4 * pos.getZoom() * dir.getDy();
-        pos.addMetersX(offsetX);
-        pos.addMetersY(offsetY);
-        
-        velocity += Velocity(fragmentSpeed, direction);
-        
-        angularVelocity = 2.5;
-    }
-    virtual void move(double time) override{
-        
-        Acceleration gravity = getGravity(pos);
-        updatePosition(pos, velocity, gravity, time);
-        updateVelocity(velocity, gravity, time);
-        direction.rotate(angularVelocity);
+    // Move function override
+    virtual void move(double time) override;
 
-    }
-    virtual void destroy(vector<Satellite*>* satellites) override{
-        for (int i = 0; i < numFragments; i++) {
-            satellites->push_back(new Fragment(this->getPosition(), this->getVelocity()));
-        }
-        kill();
-    }
-
+    // Destroy function override
+    virtual void destroy(vector<Satellite*>* satellites) override;
 };
 
+// Subclass representing the center part of a GPS satellite
 class GPSCenter : public Part {
 public:
     // Constructor
-    GPSCenter(Position posit, Direction dir) : Part(posit, dir) {
-        radius = 7 * pos.getZoom();
-        numFragments = 3;
-    }
+    GPSCenter(Position posit, Direction dir);
 
     // Override the draw function
-    virtual void draw() override {
-        ogstream().drawGPSCenter(pos, angularVelocity);
-    }
+    virtual void draw() override;
 };
 
+// Subclass representing the left part of a GPS satellite
 class GPSLeft : public Part {
 public:
     // Constructor
-    GPSLeft(Position posit, Direction dir) : Part(posit, dir) {
-        radius = 8 * pos.getZoom();
-        numFragments = 2;
-    }
+    GPSLeft(Position posit, Direction dir);
 
     // Override the draw function
-    virtual void draw() override {
-        ogstream().drawGPSLeft(pos, angularVelocity);
-    }
+    virtual void draw() override;
 };
 
+// Subclass representing the right part of a GPS satellite
 class GPSRight : public Part {
 public:
     // Constructor
-    GPSRight(Position posit, Direction dir) : Part(posit, dir) {
-        radius = 8 * pos.getZoom();
-        numFragments = 2;
-    }
+    GPSRight(Position posit, Direction dir);
 
     // Override the draw function
-    virtual void draw() override {
-        ogstream().drawGPSRight(pos, angularVelocity);
-    }
+    virtual void draw() override;
 };
 
+// Subclass representing the telescope part of a Hubble satellite
 class HubbleTelescope : public Part {
 public:
     // Constructor
-    HubbleTelescope(Position posit, Direction dir) : Part(posit, dir) {
-        radius = 10 * pos.getZoom();
-        numFragments = 3;
-    }
+    HubbleTelescope(Position posit, Direction dir);
 
     // Override the draw function
-    virtual void draw() override {
-        ogstream().drawHubbleTelescope(pos, angularVelocity);
-    }
+    virtual void draw() override;
 };
 
+// Subclass representing the computer part of a Hubble satellite
 class HubbleComputer : public Part {
 public:
     // Constructor
-    HubbleComputer(Position posit, Direction dir) : Part(posit, dir) {
-        radius = 7 * pos.getZoom();
-        numFragments = 2;
-    }
+    HubbleComputer(Position posit, Direction dir);
 
     // Override the draw function
-    virtual void draw() override {
-        ogstream().drawHubbleComputer(pos, angularVelocity);
-    }
+    virtual void draw() override;
 };
 
+// Subclass representing the left part of a Hubble satellite
 class HubbleLeft : public Part {
 public:
     // Constructor
-    HubbleLeft(Position posit, Direction dir) : Part(posit, dir) {
-        radius = 8 * pos.getZoom();
-        numFragments = 2;
-    }
+    HubbleLeft(Position posit, Direction dir);
 
     // Override the draw function
-    virtual void draw() override {
-        ogstream().drawHubbleLeft(pos, angularVelocity);
-    }
+    virtual void draw() override;
 };
 
+// Subclass representing the right part of a Hubble satellite
 class HubbleRight : public Part {
 public:
     // Constructor
-    HubbleRight(Position posit, Direction dir) : Part(posit, dir) {
-        radius = 8 * pos.getZoom();
-        numFragments = 2;
-    }
+    HubbleRight(Position posit, Direction dir);
 
     // Override the draw function
-    virtual void draw() override {
-        ogstream().drawHubbleRight(pos, angularVelocity);
-    }
+    virtual void draw() override;
 };
 
+// Subclass representing the center part of a Crew Dragon satellite
 class CrewDragonCenter : public Part {
 public:
     // Constructor
-    CrewDragonCenter(Position posit, Direction dir) : Part(posit, dir) {
-        radius = 6 * pos.getZoom();
-        numFragments = 4;
-    }
+    CrewDragonCenter(Position posit, Direction dir);
 
     // Override the draw function
-    virtual void draw() override {
-        ogstream().drawCrewDragonCenter(pos, angularVelocity);
-    }
+    virtual void draw() override;
 };
 
+// Subclass representing the left part of a Crew Dragon satellite
 class CrewDragonLeft : public Part {
 public:
     // Constructor
-    CrewDragonLeft(Position posit, Direction dir) : Part(posit, dir) {
-        radius = 6 * pos.getZoom();
-        numFragments = 2;
-    }
+    CrewDragonLeft(Position posit, Direction dir);
 
     // Override the draw function
-    virtual void draw() override {
-        ogstream().drawCrewDragonLeft(pos, angularVelocity);
-    }
+    virtual void draw() override;
 };
 
+// Subclass representing the right part of a Crew Dragon satellite
 class CrewDragonRight : public Part {
 public:
     // Constructor
-    CrewDragonRight(Position posit, Direction dir) : Part(posit, dir) {
-        radius = 6 * pos.getZoom();
-        numFragments = 2;
-    }
+    CrewDragonRight(Position posit, Direction dir);
 
     // Override the draw function
-    virtual void draw() override {
-        ogstream().drawCrewDragonRight(pos, angularVelocity);
-    }
+    virtual void draw() override;
 };
 
+// Subclass representing the body part of a Starlink satellite
 class StarlinkBody : public Part {
 public:
     // Constructor
-    StarlinkBody(Position posit, Direction dir) : Part(posit, dir) {
-        radius = 2 * pos.getZoom();
-        numFragments = 3;
-    }
+    StarlinkBody(Position posit, Direction dir);
 
     // Override the draw function
-    virtual void draw() override {
-        ogstream().drawStarlinkBody(pos, angularVelocity);
-    }
+    virtual void draw() override;
 };
 
+// Subclass representing the array part of a Starlink satellite
 class StarlinkArray : public Part {
 public:
     // Constructor
-    StarlinkArray(Position posit, Direction dir) : Part(posit, dir) {
-        radius = 4 * pos.getZoom();
-        numFragments = 3;
-    }
+    StarlinkArray(Position posit, Direction dir);
 
     // Override the draw function
-    virtual void draw() override {
-        ogstream().drawStarlinkArray(pos, angularVelocity);
-    }
+    virtual void draw() override;
 };

@@ -1,32 +1,25 @@
 #pragma once
+
 #include "satellite.h"
 #include "uiDraw.h"
 
-class Ship;
+class Ship; // Forward declaration of Ship class
+
+// Projectile class representing a projectile satellite
 class Projectile : public Satellite {
 protected:
-    int lifespan = 170;
+    int lifespan = 140;
+
 public:
+    // Constructor declaration
     Projectile(Ship* ship);
-    virtual void move(double time) override{
-        
-        Acceleration gravity = getGravity(pos);
-        updatePosition(pos, velocity, gravity, time);
-        updateVelocity(velocity, gravity, time);
-        direction.rotate(angularVelocity);
-        lifespan -= 1;
-        radius = 1 * pos.getZoom();
 
-    }
-    virtual void draw() override{
-        lifespan -= 1;
-        if(lifespan <= 0){
-            kill();
-        }
-        ogstream().drawProjectile(pos);
-    };
-    virtual void destroy(vector<Satellite*>* satellites) override{
-        kill();
-    }
+    // Override the move method
+    virtual void move(double time) override;
 
+    // Override the draw method
+    virtual void draw() override;
+
+    // Override the destroy method
+    virtual void destroy(vector<Satellite*>* satellites) override;
 };

@@ -1,19 +1,3 @@
-///*************************************************************
-// * 1. Name:
-// *      Orbit
-// * 2. Assignment Name:
-// *      Lab 08: Orbit Simulator
-// * 3. Assignment Description:
-// *      Simulate satellites orbiting the earth
-// * 4. What was the hardest part? Be as specific as possible.
-// *      ??
-// * 5. How long did it take for you to complete the assignment?
-// *      ??
-// *****************************************************************/
-//
-//#include <cassert>      // for ASSERT
-//#include "uiInteract.h" // for INTERFACE
-//#include "uiDraw.h"     // for RANDOM and DRAW*
 #include "position.h"      // for POINT
 #include "satellite.h"
 #include "simulator.h"
@@ -47,10 +31,10 @@ int WINAPI wWinMain(
 int main(int argc, char** argv)
 #endif // !_WIN32
 {
-   // Initialize OpenGL
+    // Run Tests
     testRunner();
 
-       // Initialize OpenGL
+    // Initialize OpenGL
     Position ptUpperRight;
     ptUpperRight.setZoom(128000.0 /* 128km equals 1 pixel */);
     ptUpperRight.setPixelsX(1000.0);
@@ -61,8 +45,9 @@ int main(int argc, char** argv)
 
 
 
-   // set everything into action
+    // Set everything into action
     Simulator sim(ptUpperRight);
     ui.run(callBack, &sim);
+    
    return 0;
 }

@@ -7,6 +7,7 @@ using namespace::std;
 // Forward declaration of Hubble class
 class Satellite;
 class Earth;
+class Ship;
 
 class Simulator {
 public:
@@ -22,6 +23,7 @@ public:
     double radiansPerFrame = (radiansInADay / frameRate) * (dilation / secondsPerDay);
     
     vector<Satellite*> satellites; // Use pointer to Hubble to avoid circular dependency
+    Ship* ship;
     Earth* earth;
     Star stars[500];
     

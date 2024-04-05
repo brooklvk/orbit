@@ -9,7 +9,7 @@ class Whole : public Satellite {
 protected:
     int numFragments;
 public:
-    Whole(); // Constructor declaration
+    Whole(){}; // Constructor declaration
 
 };
 

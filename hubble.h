@@ -1,33 +1,13 @@
-
 #pragma once
-#include <iostream>
+
+#include <vector>
 #include "whole.h"
 #include "uiDraw.h"
 #include "physics.h"
 
-using namespace std;
-
 class Hubble : public Whole {
 public:
-    Hubble(){
-        pos.setMeters(0.0, 42164000.0);
-        velocity.setDxDy (-3100.0, 0.0);
-        direction = velocity.getDirection();
-        angularVelocity = 0.02;
-        radius = 12 * pos.getZoom();
-    };
-    virtual void draw() override{
-        ogstream().drawHubble(pos, direction.getRadians());
-    }
-    virtual void destroy(vector<Satellite*>* satellites) override{
-        for (int i = 0; i < numFragments; i++) {
-            satellites->push_back(new Fragment(this->getPosition(), this->getVelocity()));
-        }
-        satellites->push_back(new HubbleLeft(this->getPosition(), Direction(90)));
-        satellites->push_back(new HubbleRight(this->getPosition(), Direction(180)));
-        satellites->push_back(new HubbleComputer(this->getPosition(), Direction(270)));
-        satellites->push_back(new HubbleTelescope(this->getPosition(), Direction(0)));
-
-        kill();
-    }
+    Hubble();
+    virtual void draw() override;
+    virtual void destroy(std::vector<Satellite*>* satellites) override;
 };

@@ -26,3 +26,32 @@ Projectile::Projectile(Ship* ship) {
     angularVelocity = 0.0;
 }
 
+// Override the move method for Projectile class
+void Projectile::move(double time) {
+    // Update position, velocity, and direction
+    Acceleration gravity = getGravity(pos);
+    updatePosition(pos, velocity, gravity, time);
+    updateVelocity(velocity, gravity, time);
+    direction.rotate(angularVelocity);
+    
+    // Decrease lifespan
+    lifespan -= 1;
+}
+
+// Override the draw method for Projectile class
+void Projectile::draw() {
+    // Decrease lifespan and check if the projectile should be killed
+    lifespan -= 1;
+    if (lifespan <= 0) {
+        kill();
+    }
+    
+    // Draw the projectile
+    ogstream().drawProjectile(pos);
+}
+
+// Override the destroy method for Projectile class
+void Projectile::destroy(vector<Satellite*>* satellites) {
+    // Destroy the projectile
+    kill();
+}

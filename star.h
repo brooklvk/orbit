@@ -1,28 +1,22 @@
-
 #pragma once
 
 #include <cassert>
 #include "position.h"   // for POSITION
 #include "uiDraw.h"     // for OGSTREAM
-
 using namespace std;
 
-/**************************************************
- * STAR
- * Keeps track of where the star is, and what its
- * phase is. Phase makes it twinkle.
- *************************************************/
+
 class Star
 {
 public:
-   // constructor
-   Star();
-   Star(const Position& ptBoundary);
+    // Constructor
+    Star();
+    Star(const Position& ptBoundary);
 
-   // drawers
-   void draw();
+    // Draw function
+    void draw();
 
 private:
-   Position position;
-   unsigned char phase;
+    Position position;    // Position of the star
+    unsigned char phase;  // Phase of the star, used for twinkling
 };
