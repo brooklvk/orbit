@@ -13,7 +13,7 @@ Sputnik::Sputnik() {
 }
 
 // Override the draw function for Sputnik class
-void Sputnik::draw() {
+void Sputnik::draw() const {
     // Draw the Sputnik
     ogstream().drawSputnik(pos, direction.getRadians());
 }

@@ -8,7 +8,7 @@ class Ship; // Forward declaration of Ship class
 // Projectile class representing a projectile satellite
 class Projectile : public Satellite {
 protected:
-    int lifespan = 140;
+    int lifespan = 70;
 
 public:
     // Constructor declaration
@@ -18,7 +18,7 @@ public:
     virtual void move(double time) override;
 
     // Override the draw method
-    virtual void draw() override;
+    virtual void draw() const override;
 
     // Override the destroy method
     virtual void destroy(vector<Satellite*>* satellites) override;

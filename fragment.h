@@ -16,7 +16,10 @@ public:
 
     // Override the destroy method
     virtual void destroy(std::vector<Satellite*>* satellites) override;
+    
+    // Override the move method
+    virtual void move(double time) override;
 
     // Override the draw method
-    virtual void draw() override;
+    virtual void draw() const override;
 };

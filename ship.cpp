@@ -15,7 +15,7 @@ Direction Ship::getDirection() {
     return direction;
 }
 
-void Ship::draw() {
+void Ship::draw() const {
     // Draw the ship
     ogstream().drawShip(pos, angularVelocity, thrust);
 }

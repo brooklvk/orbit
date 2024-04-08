@@ -14,7 +14,7 @@ class Ship : public Whole {
 public:
     Ship();  // Constructor
     Direction getDirection();  // Getter for direction
-    virtual void draw() override;
+    virtual void draw() const override;
     virtual void destroy(vector<Satellite*>* satellites) override;
     void input(const Interface* pUI, vector<Satellite*>& satellites);  // Handle user input for ship control
     virtual void move(double time) override;

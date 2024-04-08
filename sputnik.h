@@ -13,7 +13,7 @@ public:
     Sputnik();
 
     // Override the draw function
-    virtual void draw() override;
+    virtual void draw() const override;
 
     // Override the destroy function
     virtual void destroy(vector<Satellite*>* satellites) override;

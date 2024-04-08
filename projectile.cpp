@@ -34,18 +34,16 @@ void Projectile::move(double time) {
     updateVelocity(velocity, gravity, time);
     direction.rotate(angularVelocity);
     
-    // Decrease lifespan
-    lifespan -= 1;
-}
-
-// Override the draw method for Projectile class
-void Projectile::draw() {
     // Decrease lifespan and check if the projectile should be killed
     lifespan -= 1;
     if (lifespan <= 0) {
         kill();
     }
     
+}
+
+// Override the draw method for Projectile class
+void Projectile::draw() const {
     // Draw the projectile
     ogstream().drawProjectile(pos);
 }

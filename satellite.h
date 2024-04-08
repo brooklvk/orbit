@@ -4,7 +4,7 @@
 #include "velocity.h"
 #include "uiInteract.h"
 #include "physics.h"
-using namespace::std;
+using namespace std;
 
 class Satellite {
 protected:
@@ -18,14 +18,15 @@ protected:
 public:
     Satellite();
     Satellite(double x, double y);
-    double getRadius();
-    bool isDead();
-    Velocity getVelocity();
-    Position getPosition();
+    double getRadius() const;
+    bool isDead() const;
+    Velocity getVelocity() const;
+    Position getPosition() const;
     void kill();
     void setPos(int x, int y);
     virtual void destroy(vector<Satellite*>* satellites) = 0;
-    virtual void draw() = 0;
+    virtual void draw() const = 0;
     virtual void move(double time);
 };
+
 

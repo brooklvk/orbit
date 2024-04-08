@@ -15,7 +15,7 @@ public:
     Starlink();
 
     // Override the draw method
-    virtual void draw() override;
+    virtual void draw() const override;
 
     // Override the destroy method
     virtual void destroy(vector<Satellite*>* satellites) override;

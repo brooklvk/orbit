@@ -13,7 +13,7 @@ Dragon::Dragon() {
 }
 
 // Override the draw function for Dragon class
-void Dragon::draw() {
+void Dragon::draw() const {
     // Draw the CrewDragon
     ogstream().drawCrewDragon(pos, direction.getRadians());
 }

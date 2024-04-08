@@ -9,14 +9,12 @@ Hubble::Hubble() {
     radius = 12 * pos.getZoom();
 }
 
-void Hubble::draw() {
+void Hubble::draw() const {
     ogstream().drawHubble(pos, direction.getRadians());
 }
 
 void Hubble::destroy(std::vector<Satellite*>* satellites) {
-    for (int i = 0; i < numFragments; i++) {
-        satellites->push_back(new Fragment(this->getPosition(), this->getVelocity()));
-    }
+
     satellites->push_back(new HubbleLeft(this->getPosition(), Direction(90)));
     satellites->push_back(new HubbleRight(this->getPosition(), Direction(180)));
     satellites->push_back(new HubbleComputer(this->getPosition(), Direction(270)));

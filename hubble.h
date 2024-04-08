@@ -8,6 +8,6 @@
 class Hubble : public Whole {
 public:
     Hubble();
-    virtual void draw() override;
+    virtual void draw() const override;
     virtual void destroy(std::vector<Satellite*>* satellites) override;
 };

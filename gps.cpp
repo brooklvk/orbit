@@ -15,7 +15,7 @@ GPS::GPS(Position posit, Velocity vel) {
 }
 
 // Draw function
-void GPS::draw() {
+void GPS::draw() const {
     // Draw GPS
     ogstream().drawGPS(pos, direction.getRadians());
 }

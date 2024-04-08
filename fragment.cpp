@@ -34,14 +34,24 @@ void Fragment::destroy(std::vector<Satellite*>* satellites) {
     kill();
 }
 
-// Override the draw method for Fragment class
-void Fragment::draw() {
-    // Decrease numFrames by 1 each time draw is called
+// Override the move method for Projectile class
+void Fragment::move(double time) {
+    // Update position, velocity, and direction
+    Acceleration gravity = getGravity(pos);
+    updatePosition(pos, velocity, gravity, time);
+    updateVelocity(velocity, gravity, time);
+    direction.rotate(angularVelocity);
+    
+    // Decrease lifespan and check if the projectile should be killed
     numFrames -= 1;
     // If numFrames reaches 1 or less, destroy the Fragment
     if (numFrames <= 1) {
         kill();
     }
+    
+}
+// Override the draw method for Fragment class
+void Fragment::draw() const {
     // Draw the Fragment
     ogstream().drawFragment(pos, direction.getRadians());
 }

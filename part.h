@@ -29,7 +29,7 @@ public:
     GPSCenter(Position posit, Direction dir);
 
     // Override the draw function
-    virtual void draw() override;
+    virtual void draw() const override;
 };
 
 // Subclass representing the left part of a GPS satellite
@@ -39,7 +39,7 @@ public:
     GPSLeft(Position posit, Direction dir);
 
     // Override the draw function
-    virtual void draw() override;
+    virtual void draw() const override;
 };
 
 // Subclass representing the right part of a GPS satellite
@@ -49,7 +49,7 @@ public:
     GPSRight(Position posit, Direction dir);
 
     // Override the draw function
-    virtual void draw() override;
+    virtual void draw() const override;
 };
 
 // Subclass representing the telescope part of a Hubble satellite
@@ -59,7 +59,7 @@ public:
     HubbleTelescope(Position posit, Direction dir);
 
     // Override the draw function
-    virtual void draw() override;
+    virtual void draw() const override;
 };
 
 // Subclass representing the computer part of a Hubble satellite
@@ -69,7 +69,7 @@ public:
     HubbleComputer(Position posit, Direction dir);
 
     // Override the draw function
-    virtual void draw() override;
+    virtual void draw() const override;
 };
 
 // Subclass representing the left part of a Hubble satellite
@@ -79,7 +79,7 @@ public:
     HubbleLeft(Position posit, Direction dir);
 
     // Override the draw function
-    virtual void draw() override;
+    virtual void draw() const override;
 };
 
 // Subclass representing the right part of a Hubble satellite
@@ -89,7 +89,7 @@ public:
     HubbleRight(Position posit, Direction dir);
 
     // Override the draw function
-    virtual void draw() override;
+    virtual void draw() const override;
 };
 
 // Subclass representing the center part of a Crew Dragon satellite
@@ -99,7 +99,7 @@ public:
     CrewDragonCenter(Position posit, Direction dir);
 
     // Override the draw function
-    virtual void draw() override;
+    virtual void draw() const override;
 };
 
 // Subclass representing the left part of a Crew Dragon satellite
@@ -109,7 +109,7 @@ public:
     CrewDragonLeft(Position posit, Direction dir);
 
     // Override the draw function
-    virtual void draw() override;
+    virtual void draw() const override;
 };
 
 // Subclass representing the right part of a Crew Dragon satellite
@@ -119,7 +119,7 @@ public:
     CrewDragonRight(Position posit, Direction dir);
 
     // Override the draw function
-    virtual void draw() override;
+    virtual void draw() const override;
 };
 
 // Subclass representing the body part of a Starlink satellite
@@ -129,7 +129,7 @@ public:
     StarlinkBody(Position posit, Direction dir);
 
     // Override the draw function
-    virtual void draw() override;
+    virtual void draw() const override;
 };
 
 // Subclass representing the array part of a Starlink satellite
@@ -139,5 +139,5 @@ public:
     StarlinkArray(Position posit, Direction dir);
 
     // Override the draw function
-    virtual void draw() override;
+    virtual void draw() const override;
 };

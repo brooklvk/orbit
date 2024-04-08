@@ -5,19 +5,19 @@ Satellite::Satellite() : velocity(), pos(), direction(), angularVelocity(0), dea
 
 Satellite::Satellite(double x, double y) : pos(x, y), velocity(), direction(), angularVelocity(0), dead(false), radius(0) {}
 
-double Satellite::getRadius() {
+double Satellite::getRadius() const{
     return radius;
 }
 
-bool Satellite::isDead() {
+bool Satellite::isDead() const {
     return dead;
 }
 
-Velocity Satellite::getVelocity() {
+Velocity Satellite::getVelocity() const {
     return velocity;
 }
 
-Position Satellite::getPosition() {
+Position Satellite::getPosition() const {
     return pos;
 }
 

@@ -56,7 +56,7 @@ GPSCenter::GPSCenter(Position posit, Direction dir) : Part(posit, dir) {
 }
 
 // Override the draw function for GPSCenter subclass
-void GPSCenter::draw() {
+void GPSCenter::draw() const {
     // Draw GPSCenter
     ogstream().drawGPSCenter(pos, angularVelocity);
 }
@@ -69,7 +69,7 @@ GPSLeft::GPSLeft(Position posit, Direction dir) : Part(posit, dir) {
 }
 
 // Override the draw function for GPSLeft subclass
-void GPSLeft::draw() {
+void GPSLeft::draw() const {
     // Draw GPSLeft
     ogstream().drawGPSLeft(pos, angularVelocity);
 }
@@ -82,7 +82,7 @@ GPSRight::GPSRight(Position posit, Direction dir) : Part(posit, dir) {
 }
 
 // Override the draw function for GPSRight subclass
-void GPSRight::draw() {
+void GPSRight::draw() const {
     // Draw GPSRight
     ogstream().drawGPSRight(pos, angularVelocity);
 }
@@ -95,7 +95,7 @@ HubbleTelescope::HubbleTelescope(Position posit, Direction dir) : Part(posit, di
 }
 
 // Override the draw function for HubbleTelescope subclass
-void HubbleTelescope::draw() {
+void HubbleTelescope::draw() const {
     // Draw HubbleTelescope
     ogstream().drawHubbleTelescope(pos, angularVelocity);
 }
@@ -108,7 +108,7 @@ HubbleComputer::HubbleComputer(Position posit, Direction dir) : Part(posit, dir)
 }
 
 // Override the draw function for HubbleComputer subclass
-void HubbleComputer::draw() {
+void HubbleComputer::draw() const {
     // Draw HubbleComputer
     ogstream().drawHubbleComputer(pos, angularVelocity);
 }
@@ -121,7 +121,7 @@ HubbleLeft::HubbleLeft(Position posit, Direction dir) : Part(posit, dir) {
 }
 
 // Override the draw function for HubbleLeft subclass
-void HubbleLeft::draw() {
+void HubbleLeft::draw() const {
     // Draw HubbleLeft
     ogstream().drawHubbleLeft(pos, angularVelocity);
 }
@@ -134,7 +134,7 @@ HubbleRight::HubbleRight(Position posit, Direction dir) : Part(posit, dir) {
 }
 
 // Override the draw function for HubbleRight subclass
-void HubbleRight::draw() {
+void HubbleRight::draw() const {
     // Draw HubbleRight
     ogstream().drawHubbleRight(pos, angularVelocity);
 }
@@ -147,7 +147,7 @@ CrewDragonCenter::CrewDragonCenter(Position posit, Direction dir) : Part(posit, 
 }
 
 // Override the draw function for CrewDragonCenter subclass
-void CrewDragonCenter::draw() {
+void CrewDragonCenter::draw() const {
     // Draw CrewDragonCenter
     ogstream().drawCrewDragonCenter(pos, angularVelocity);
 }
@@ -160,7 +160,7 @@ CrewDragonLeft::CrewDragonLeft(Position posit, Direction dir) : Part(posit, dir)
 }
 
 // Override the draw function for CrewDragonLeft subclass
-void CrewDragonLeft::draw() {
+void CrewDragonLeft::draw() const {
     // Draw CrewDragonLeft
     ogstream().drawCrewDragonLeft(pos, angularVelocity);
 }
@@ -173,7 +173,7 @@ CrewDragonRight::CrewDragonRight(Position posit, Direction dir) : Part(posit, di
 }
 
 // Override the draw function for CrewDragonRight subclass
-void CrewDragonRight::draw() {
+void CrewDragonRight::draw() const {
     // Draw CrewDragonRight
     ogstream().drawCrewDragonRight(pos, angularVelocity);
 }
@@ -186,7 +186,7 @@ StarlinkBody::StarlinkBody(Position posit, Direction dir) : Part(posit, dir) {
 }
 
 // Override the draw function for StarlinkBody subclass
-void StarlinkBody::draw() {
+void StarlinkBody::draw() const {
     // Draw StarlinkBody
     ogstream().drawStarlinkBody(pos, angularVelocity);
 }
@@ -199,7 +199,7 @@ StarlinkArray::StarlinkArray(Position posit, Direction dir) : Part(posit, dir) {
 }
 
 // Override the draw function for StarlinkArray subclass
-void StarlinkArray::draw() {
+void StarlinkArray::draw() const {
     // Draw StarlinkArray
     ogstream().drawStarlinkArray(pos, angularVelocity);
 }

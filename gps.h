@@ -11,6 +11,6 @@ class GPS : public Whole {
 public:
     GPS(Position posit, Velocity vel);
 
-    virtual void draw() override;
+    virtual void draw() const override;
     virtual void destroy(vector<Satellite*>* satellites) override;
 };

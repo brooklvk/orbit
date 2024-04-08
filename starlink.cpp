@@ -13,7 +13,7 @@ Starlink::Starlink() {
 }
 
 // Override the draw method for Starlink class
-void Starlink::draw() {
+void Starlink::draw() const {
     // Draw the Starlink
     ogstream().drawStarlink(pos, direction.getRadians());
 }
